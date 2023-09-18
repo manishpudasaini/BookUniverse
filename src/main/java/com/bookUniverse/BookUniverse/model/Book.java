@@ -27,22 +27,16 @@ public class Book {
     @Column(name = "book_name", length = 100, nullable = false)
     private String name;
 
-    @Column(name = "page_number")
-    private Integer page;
-
     @Column(name = "isbn_number", length = 30, nullable = false)
     private String isbn;
 
     @Column(name = "book_rating")
     private Double rating;
 
-    @Column(name = "book_stock", nullable = false)
-    private Integer stock;
-
     @Column(name = "published_date", nullable = false)
     private LocalDate published_date;
 
-    @Column(name = "image_path", nullable = false, length = 150)
+    @Column(name = "image_path", nullable = false)
     private String image_path;
 
     private Boolean deleted ;
@@ -50,7 +44,7 @@ public class Book {
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "fk_book_categoryId"))
     private Category category;
 
-    @ManyToMany(targetEntity = Author.class,fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "book_author_table",
             foreignKey = @ForeignKey(name = "fk_book_authorId"),
             inverseForeignKey = @ForeignKey(name = "fk_author_bookId")
