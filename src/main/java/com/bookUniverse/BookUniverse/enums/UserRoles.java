@@ -1,5 +1,5 @@
 package com.bookUniverse.BookUniverse.enums;
 
-public enum RoleName {
+public enum UserRoles {
     ADMIN,USER
 }
